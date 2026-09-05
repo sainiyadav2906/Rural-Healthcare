@@ -6,12 +6,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Test route
-app.get("/", (req, res) => {
-    res.send("Rural Healthcare Backend is running!");
-});
-
-// Sample facilities data
+// Healthcare facilities
 const facilities = [
     {
         name: "Primary Health Center",
@@ -33,18 +28,34 @@ const facilities = [
     }
 ];
 
-// Facilities API
-app.get("/api/facilities", (req, res) => {
-    res.json(facilities);
-});
-
-// Sample routes data
+// Routes between villages and healthcare facilities
 const routes = [
+    // Village A
     {
         from: "Village A",
         to: "Primary Health Center",
         distance: 8,
         time: 20
+    },
+    {
+        from: "Village A",
+        to: "Community Health Center",
+        distance: 15,
+        time: 35
+    },
+    {
+        from: "Village A",
+        to: "District Hospital",
+        distance: 30,
+        time: 65
+    },
+
+    // Village B
+    {
+        from: "Village B",
+        to: "Primary Health Center",
+        distance: 10,
+        time: 25
     },
     {
         from: "Village B",
@@ -53,10 +64,44 @@ const routes = [
         time: 35
     },
     {
+        from: "Village B",
+        to: "District Hospital",
+        distance: 32,
+        time: 70
+    },
+
+    // Village C
+    {
+        from: "Village C",
+        to: "Primary Health Center",
+        distance: 12,
+        time: 30
+    },
+    {
         from: "Village C",
         to: "Community Health Center",
         distance: 20,
         time: 45
+    },
+    {
+        from: "Village C",
+        to: "District Hospital",
+        distance: 35,
+        time: 75
+    },
+
+    // Village D
+    {
+        from: "Village D",
+        to: "Primary Health Center",
+        distance: 15,
+        time: 35
+    },
+    {
+        from: "Village D",
+        to: "Community Health Center",
+        distance: 22,
+        time: 50
     },
     {
         from: "Village D",
@@ -66,14 +111,25 @@ const routes = [
     }
 ];
 
-// Routes API
+// API: Get all healthcare facilities
+app.get("/api/facilities", (req, res) => {
+    res.json(facilities);
+});
+
+// API: Get all routes
 app.get("/api/routes", (req, res) => {
     res.json(routes);
 });
 
-// Start server
-const PORT = 5000;
+// Test route
+app.get("/", (req, res) => {
+    res.send("Rural Healthcare Backend is running!");
+});
 
-app.listen(PORT, () => {
-    console.log(`Backend server running at http://localhost:${PORT}`);
+
+// Start server
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Backend server running on port ${PORT}`);
 });
