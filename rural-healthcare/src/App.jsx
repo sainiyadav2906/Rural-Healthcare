@@ -59,11 +59,11 @@ function App() {
     const fetchData = async () => {
       try {
         const facilitiesResponse = await fetch(
-          "http://localhost:5000/api/facilities"
+          "https://rural-healthcare-9ivh.onrender.com/api/facilities"
         );
 
         const routesResponse = await fetch(
-          "http://localhost:5000/api/routes"
+          "https://rural-healthcare-9ivh.onrender.com/api/routes"
         );
 
         if (!facilitiesResponse.ok || !routesResponse.ok) {
@@ -140,7 +140,10 @@ function App() {
 
           <p>
             Make sure the backend is running on
-            <strong> http://localhost:5000</strong>
+            <strong>
+              {" "}
+              https://rural-healthcare-9ivh.onrender.com
+            </strong>
           </p>
         </div>
       </div>
@@ -155,7 +158,6 @@ function App() {
       ========================= */}
 
       <header className="header">
-
         <div className="header-content">
 
           <div className="logo">
@@ -173,7 +175,6 @@ function App() {
           <span className="status-dot"></span>
           Server Connected
         </div>
-
       </header>
 
       {/* =========================
@@ -187,7 +188,6 @@ function App() {
         ========================= */}
 
         <section className="hero">
-
           <div>
             <h2>Find the Best Healthcare Route</h2>
 
@@ -200,7 +200,6 @@ function App() {
           <div className="hero-icon">
             🚑
           </div>
-
         </section>
 
 
@@ -211,7 +210,6 @@ function App() {
         <section className="services-section">
 
           <div className="section-title">
-
             <div>
               <h2>🚑 Ambulance Services</h2>
 
@@ -229,7 +227,6 @@ function App() {
               }{" "}
               Available
             </span>
-
           </div>
 
 
